@@ -74,6 +74,24 @@ app.get('/auth/callback', passport.authenticate('auth0', {
     failureRedirect: 'http://localhost:3000/#/'
 }))
 
+//IF SOMEONE IS NOT LOGGED IN, THERE WILL BE NOTHING ON REQ.USER.
+app.get('/auth/me', (req, res) => {
+    if(!req.user) {
+        return res.status(404).send('User not found')
+    } else {
+        return res.status(200).send(req.user)
+    }
+})
+
+//REQ.LOGOUT COMES FROM PASSPORT AND TERMINATES THE SESSION.
+app.get('/auth/logout', (req,res) => {
+    req.logOut()
+    return res.redirect(302, 'http://localhost:3000/#/');
+    //RES.REDIRECT COMES FROM EXPRESS TO REDIRECT THE USER
+})
+
+//END OF ENDPOINTS
+
 
 
 
