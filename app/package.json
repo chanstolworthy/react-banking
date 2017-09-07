@@ -26,6 +26,5 @@
   "devDependencies": {},
   "author": "",
   "license": "ISC",
-  //PROXY ADDED. this tells our front end where to look for endpoints. once we have a live hosted site, we will only need to change the proxy, not on all the endpoints
-  "proxy": "http://localhost:3000"
+  "proxy": "http://localhost:3001"
 }
